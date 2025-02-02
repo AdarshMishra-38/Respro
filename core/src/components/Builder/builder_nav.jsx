@@ -16,8 +16,7 @@ export default function BuilderNav() {
           "Projects",
           "Education",
           "Achievements",
-          "Summary",
-          "Others",
+          
         ].map((tab) => (
           <li className="nav-item" key={tab}>
             <button

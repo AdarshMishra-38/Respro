@@ -26,7 +26,7 @@ export default function DataProvider({ children }) {
           {
             institution: '',
             percentage: '',
-            fieldOfStudy: '',
+            degree: '',
             startDate: '',
             endDate: '',
             grade: '',

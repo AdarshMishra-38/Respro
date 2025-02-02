@@ -5,7 +5,7 @@ import { DataContext } from "../context/dataContext";
 export default function BasicInfoForm() {
     const { resumeData, updateResumeData } = useContext(DataContext); 
 
-    console.log(resumeData);
+
     
     const handleChange = (e) => {
         const { name, value } = e.target;
