@@ -25,21 +25,27 @@ export default function WorkExperienceForm() {
     };
 
     const handleRemoveWorkExperience = (index) => {
-        const updatedData = [...resumeData.workExperience];
-        updatedData.splice(index, 1);
+        const confirmDelete = window.confirm(
+            `You are about to delete Job ${index + 1}. Are you sure?`
+        );
 
-        if (updatedData.length === 0) {
-            updateResumeData("workExperience", [{
-                company: "",
-                role: "",
-                startDate: "",
-                endDate: "",
-                description: ""
-            }]); // Ensure at least one field remains
-            setActiveIndex(0);
-        } else {
-            updateResumeData("workExperience", updatedData);
-            setActiveIndex(Math.max(0, index - 1)); // Move to previous tab if possible
+        if (confirmDelete) {
+            const updatedData = [...resumeData.workExperience];
+            updatedData.splice(index, 1);
+
+            if (updatedData.length === 0) {
+                updateResumeData("workExperience", [{
+                    company: "",
+                    role: "",
+                    startDate: "",
+                    endDate: "",
+                    description: ""
+                }]); // Ensure at least one field remains
+                setActiveIndex(0);
+            } else {
+                updateResumeData("workExperience", updatedData);
+                setActiveIndex(Math.max(0, index - 1)); // Move to previous tab if possible
+            }
         }
     };
 
@@ -72,9 +78,8 @@ export default function WorkExperienceForm() {
                                     transform: "translateY(-50%)",
                                     cursor: "pointer",
                                     fontSize: "14px",
-                        
+                                    color: "#fff",
                                     padding: "2px 6px",
-        
                                     background: "transparent",
                                 }}
                                 onClick={(e) => {
@@ -82,7 +87,7 @@ export default function WorkExperienceForm() {
                                     handleRemoveWorkExperience(index);
                                 }}
                             >
-                                <i class="bi bi-x-square ms-3 text-danger"></i>
+                                <i className="bi bi-x-square ms-3 text-danger"></i>
                             </span>
                         </button>
                     </li>

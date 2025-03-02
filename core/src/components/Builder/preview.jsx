@@ -3,10 +3,42 @@ import { DataContext } from "./context/dataContext";
 import "./css/preview.css";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import axios from "axios";
+
 
 export default function Preview() {
   const { resumeData } = useContext(DataContext);
-  console.log(resumeData);
+  // console.log(resumeData);
+  const getCategory = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/resume/category', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(resumeData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Category:', result.category);
+        alert(`Predicted category: ${result.category}`);
+      } else {
+        console.error('Error:', result.error);
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('Failed to connect to the server.');
+    }
+  };
+
+
+
+
+ 
+  
+
 
   // State to manage selected template
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
@@ -79,6 +111,8 @@ export default function Preview() {
 
   return (
     <>
+  
+
       <div className="d-flex justify-content-between p-3">
         {/* Dropdown for selecting template */}
         <select 
@@ -91,6 +125,8 @@ export default function Preview() {
           <option value="template3">Template 3</option>
           <option value="template4">Template 4</option>
         </select>
+        <button className="border border-danger"onClick={getCategory}>Get Category</button>
+
 
         <button className="btn btn-primary" onClick={downloadResume}>
           <i className="bi bi-arrow-90deg-down"></i>

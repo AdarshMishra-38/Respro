@@ -25,21 +25,27 @@ export default function EducationForm() {
     };
 
     const handleRemoveEducation = (index) => {
-        const updatedData = [...resumeData.education];
-        updatedData.splice(index, 1);
+        const confirmDelete = window.confirm(
+            `You are about to delete Education ${index + 1}. Are you sure?`
+        );
 
-        if (updatedData.length === 0) {
-            updateResumeData("education", [{
-                institution: "",
-                degree: "",
-                percentage: "",
-                startDate: "",
-                endDate: ""
-            }]); // Ensure at least one field remains
-            setActiveIndex(0);
-        } else {
-            updateResumeData("education", updatedData);
-            setActiveIndex(Math.max(0, index - 1)); // Move to previous tab if possible
+        if (confirmDelete) {
+            const updatedData = [...resumeData.education];
+            updatedData.splice(index, 1);
+
+            if (updatedData.length === 0) {
+                updateResumeData("education", [{
+                    institution: "",
+                    degree: "",
+                    percentage: "",
+                    startDate: "",
+                    endDate: ""
+                }]); // Ensure at least one field remains
+                setActiveIndex(0);
+            } else {
+                updateResumeData("education", updatedData);
+                setActiveIndex(Math.max(0, index - 1)); // Move to previous tab if possible
+            }
         }
     };
 
@@ -72,16 +78,16 @@ export default function EducationForm() {
                                     transform: "translateY(-50%)",
                                     cursor: "pointer",
                                     fontSize: "14px",
-                
+                                    color: "#fff",
                                     padding: "2px 6px",
-                                    background:"transparent",
+                                    background: "transparent",
                                 }}
                                 onClick={(e) => {
                                     e.stopPropagation(); // Prevents switching tabs when clicking ❌
                                     handleRemoveEducation(index);
                                 }}
                             >
-                                <i class="bi bi-x-square ms-2 text-danger"></i>
+                                <i className="bi bi-x-square ms-2 text-danger"></i>
                             </span>
                         </button>
                     </li>
