@@ -1,36 +1,32 @@
 import express, { json } from 'express';
-import { spawn } from 'child_process';
 import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
+import resumeRoutes from './routes/resume.js';
+import userRoutes from './routes/user.js'; // Add user routes
+
+dotenv.config();
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
 app.use(json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
-app.post('/api/resume/category', (req, res) => {
-  const resumeString = JSON.stringify(req.body);
-  // Change 'python3' to 'python' for Windows
-  const pythonProcess = spawn('python', ['src/server/ml-model/app.py', resumeString]);
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error(`mongodb connection error ${process.env.MONGO_URI}`, err));
 
-  let category = '';
-  let errorOutput = '';
-
-  pythonProcess.stdout.on('data', (data) => {
-    category += data.toString().trim();
-  });
-
-  pythonProcess.stderr.on('data', (data) => {
-    errorOutput += data.toString();
-  });
-
-  pythonProcess.on('close', (code) => {
-    if (code === 0 && category) {
-      res.status(200).json({ message: 'Category predicted successfully', category });
-    } else {
-      res.status(500).json({ error: 'Failed to predict category', details: errorOutput });
-    }
-  });
-});
+app.use('/api', authRoutes);
+app.use('/api', resumeRoutes);
+app.use('/api', userRoutes); // Mount user routes
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

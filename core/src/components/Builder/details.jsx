@@ -1,4 +1,4 @@
-import BuilderNav from "./builder_nav";
+import BuilderNav from "./builder_nav.jsx";
 import "./css/index.css";
 
 export default function Details() {
