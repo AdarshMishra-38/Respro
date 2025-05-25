@@ -113,7 +113,7 @@ export default function Preview({ onGetCategory, category, message }) {
         </button>
 
         {/* Download Button */}
-        <button className="btn btn-primary" onClick={downloadResume}>
+        <button className="btn my-btn" onClick={downloadResume}>
           <i className="bi bi-arrow-90deg-down"></i> Download PDF
         </button>
       </div>

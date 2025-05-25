@@ -6,6 +6,7 @@ import Preview from "./preview";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/index.css";
 import { DataContext } from './context/dataContext';
+import Footer from '../footer/footer';
 
 export default function Builder() {
   const { resumeData, setResumeData } = useContext(DataContext); // Updated destructuring
@@ -90,15 +91,22 @@ export default function Builder() {
   };
 
   return (
-    <div className="builder container border border-warning fit-content">
-      <div className="row">
-        <div className="col-6 details custom-width border border-danger">
-          <Details />
-        </div>
-        <div className="col-6 preview custom-width border border-danger">
-          <Preview onGetCategory={handleGetCategory} category={category} message={message} />
-        </div>
+    <>
+  <div className="container my-4">
+  <div className="row gx-4">
+    <div className="col-6">
+      <div className="bg-white rounded-3 shadow p-4 ">
+        <Details />
       </div>
     </div>
+    <div className="col-6">
+      <div className="bg-white rounded-3 shadow p-4 border border-light">
+        <Preview onGetCategory={handleGetCategory} category={category} message={message} />
+      </div>
+    </div>
+  </div>
+</div>
+  <Footer/>
+  </>
   );
 }

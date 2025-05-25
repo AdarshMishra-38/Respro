@@ -8,7 +8,7 @@ export default function BuilderNav() {
 
   
   return (
-    <div className="builder-nav border border-black">
+    <div className="builder-nav ">
       <ul className="nav nav-tabs">
         {[
           "Basic Info",
@@ -18,9 +18,9 @@ export default function BuilderNav() {
           "Achievements",
           
         ].map((tab) => (
-          <li className="nav-item" key={tab}>
+          <li className="nav-item " key={tab}>
             <button
-              className={`nav-link ${activeTab === tab ? "active" : ""}`}
+              className={`nav-link ${activeTab === tab ? " text-main" : " text-black"}`}
               onClick={() => setActiveTab(tab)}
             >
               {tab}
