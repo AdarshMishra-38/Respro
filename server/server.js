@@ -27,6 +27,9 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api', authRoutes);
 app.use('/api', resumeRoutes);
 app.use('/api', userRoutes); // Mount user routes
+app.get('/', (req, res) => {
+  res.send('Welcome to the Resume Builder API');
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
