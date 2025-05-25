@@ -1,9 +1,9 @@
 import sys
 import pickle
 
-with open('src/server/ml-model/clas.pkl', 'rb') as file:
+with open('ml-model/clas.pkl', 'rb') as file:
     classifier = pickle.load(file)
-with open('src/server/ml-model/vecti.pkl', 'rb') as file:
+with open('ml-model/vecti.pkl', 'rb') as file:
     vectorizer = pickle.load(file)
 
 def get_category_label(prediction):

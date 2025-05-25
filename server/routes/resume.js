@@ -9,7 +9,7 @@ router.post('/resume/category', authenticate, (req, res) => { // POST /api/resum
   const resumeString = JSON.stringify(req.body);
   
   // Change 'python3' to 'python' for Windows
-  const pythonProcess = spawn('python', ['src/server/ml-model/app.py', resumeString]);
+  const pythonProcess = spawn('python', ['ml-model/app.py', resumeString]);
 
   let category = '';
   let errorOutput = '';
