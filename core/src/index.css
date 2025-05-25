@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.text-main{
+  color: #9f5bff !important;
+}
+.my-btn {
+  background-color:#9f5bff !important;
+  color: white !important;
+}
+.my-card-hover:hover {
+  box-shadow: 0 4px 12px rgba(159, 91, 255, 0.6); /* purple glow */
+
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* .primary-btn:hover{
+  color: ;
+} */

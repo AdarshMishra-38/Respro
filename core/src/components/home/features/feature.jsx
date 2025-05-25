@@ -27,7 +27,7 @@ export default function Feature(){
         }
     ]
     return (
-        <div className="feature container border border-danger my-3 p-3">
+        <div className="feature container my-3 p-3">
               <h1>Features</h1>
               <div className="feature-list d-flex border border-warnig ">
               <Card data={Card_data[0]} />
