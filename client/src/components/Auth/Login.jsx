@@ -4,16 +4,18 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate for redire
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 
+
 const Login = () => {                    // Define Login component
   const [email, setEmail] = useState(''); // State for email input
   const [password, setPassword] = useState(''); // State for password input
   const [message, setMessage] = useState(''); // State for feedback message
   const navigate = useNavigate();       // Hook for navigation
-
+const BASE_URL=process.env.REACT_APP_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/login', { email, password });
+      
+      const response = await axios.post(`${BASE_URL}/api/login`, { email, password });
       localStorage.setItem('token', response.data.token);
       setMessage('Logged in successfully!');
       setEmail('');

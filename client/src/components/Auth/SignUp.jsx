@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
+
 
 
 const Signup = () => {
@@ -13,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/api/signup', { email, password });
+      await axios.post(`${BASE_URL}/api/signup`, { email, password });
       setMessage('Account created! Please log in.');
       setEmail('');
       setPassword('');

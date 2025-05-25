@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/index.css";
 import { DataContext } from './context/dataContext';
 import Footer from '../footer/footer';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
+
 
 export default function Builder() {
   const { resumeData, setResumeData } = useContext(DataContext); // Updated destructuring
@@ -61,7 +63,7 @@ export default function Builder() {
 
     try {
       const response = await axios.post(
-        'http://localhost:3001/api/resume/category',
+        `${BASE_URL}/api/resume/category`,
         resumeData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -79,7 +81,7 @@ export default function Builder() {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://localhost:3001/api/resumes',
+        `${BASE_URL}/api/resumes`,
         { resumeId, name: resumeName, data: resumeData, category },
         { headers: { Authorization: `Bearer ${token}` } }
       );

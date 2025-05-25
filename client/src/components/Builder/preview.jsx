@@ -5,6 +5,8 @@ import html2canvas from "html2canvas";        // Import for PDF generation
 import jsPDF from "jspdf";                    // Import for PDF generation
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
+
+
 export default function Preview({ onGetCategory, category, message }) {
   const { resumeData } = useContext(DataContext); // Access resumeData from context
   

@@ -10,10 +10,15 @@ import Navbar from "./components/home/navbar/navbar.jsx";
 import Profile from "./components/profile/profile.jsx"; // Import Profile
 import CreateResume from "./components/profile/CreateResume.jsx";
 import ContactPage from "./components/contact/contact.jsx";
+// dotenv.config(); // Load environment variable
+
 
 function App() {
+
+  console.log("BASE_URL:", process.env); // Log the BASE_URL for debugging
   return (
     <Router>
+  
       <div className="App">
         <Navbar />
         <DataProvider>

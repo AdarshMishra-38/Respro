@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+const BASE_URL=process.env.REACT_APP_BASE_URL;
+
 
 const Profile = () => {
   const [user, setUser] = useState({ email: "", name: "" });
@@ -17,7 +19,7 @@ const Profile = () => {
       const token = localStorage.getItem("token");
       try {
         const profileRes = await axios.get(
-          "http://localhost:3001/api/profile",
+          `${BASE_URL}/api/profile`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -27,7 +29,7 @@ const Profile = () => {
         setNewName(profileRes.data.name);
 
         const resumesRes = await axios.get(
-          "http://localhost:3001/api/resumes",
+          `${BASE_URL}/api/resumes`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,7 +51,7 @@ const Profile = () => {
       if (newPassword) updates.password = newPassword;
       if (newName) updates.name = newName;
 
-      await axios.put("http://localhost:3001/api/profile", updates, {
+      await axios.put(`${BASE_URL}/api/profile`, updates, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage("Profile updated successfully");
@@ -63,7 +65,7 @@ const Profile = () => {
   const handleDeleteResume = async (resumeId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:3001/api/resumes/${resumeId}`, {
+      await axios.delete(`${BASE_URL}/api/resumes/${resumeId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setResumes(resumes.filter((resume) => resume._id !== resumeId));
