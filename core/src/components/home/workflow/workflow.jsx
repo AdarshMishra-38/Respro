@@ -19,8 +19,10 @@ export default function Workflow() {
             }
         ]
   return (
-    <div className="workflow container border border-danger my-3 p-3">
-      <h1>Workflow</h1>
+    <div className="workflow container my-3 p-3">
+      <h1>How it Works ?</h1>
+      <h3 className="text-secondary fs-5">Create your professional resume in just 3 simple steps
+</h3>
       <div className="Workflow-steps d-flex border border-warnig ">
       <Card data={Card_data[0]} />
       <Card data={Card_data[1]} />

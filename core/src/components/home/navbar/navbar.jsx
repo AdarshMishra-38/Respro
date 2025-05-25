@@ -1,6 +1,5 @@
 import React from "react"; // Import React for component creation
 import { NavLink, useNavigate } from "react-router-dom"; // Import routing tools
-
 export default function Navbar() {
   const isLoggedIn = !!localStorage.getItem("token"); // Check authentication status
   const navigate = useNavigate(); // Hook for programmatic navigation
@@ -12,11 +11,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light border border-primary mx-3">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light  mx-3">
       <div className="container-fluid">
         {/* Logo */}
         <NavLink className="navbar-brand" to="/">
-          <h1 className="m-0">Logo</h1>
+          <h1 className="m-0 text-main">ResuPro</h1>
         </NavLink>
 
         {/* Toggler for mobile view */}
@@ -34,19 +33,9 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
-                }
-                to="/"
-                end // Ensures exact match for root path
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
+          <ul className="navbar-nav me-auto m-auto mb-2 mb-lg-0 fs-5">
+
+            <li className="nav-item fw-bold">
               <NavLink
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
@@ -56,7 +45,7 @@ export default function Navbar() {
                 About
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item fw-bold">
               <NavLink
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
@@ -66,7 +55,7 @@ export default function Navbar() {
                 Contact
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item fw-bold">
               <NavLink
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
@@ -100,10 +89,10 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="d-flex">
-              <NavLink to="/login" className="btn btn-outline-primary me-2">
+              <NavLink to="/login" className="btn my-btn me-2">
                 Login
               </NavLink>
-              <NavLink to="/signup" className="btn btn-primary">
+              <NavLink to="/signup" className="btn my-btn">
                 Signup
               </NavLink>
             </div>
