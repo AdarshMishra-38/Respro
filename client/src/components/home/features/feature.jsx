@@ -26,6 +26,8 @@ export default function Feature(){
             image: "bi bi-hand-index-thumb-fill"
         }
     ]
+
+   
     return (
         <div className="feature container my-3 p-3">
               <h1>Features</h1>

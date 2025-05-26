@@ -40,9 +40,10 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "active" : ""}`
                 }
-                to="/about"
+                to="https://resupro.streamlit.app/"
+                target="_blank"
               >
-                About
+                Get Score
               </NavLink>
             </li>
             <li className="nav-item fw-bold">

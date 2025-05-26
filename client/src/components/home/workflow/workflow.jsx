@@ -18,7 +18,25 @@ export default function Workflow() {
                 image: "bi bi-file-earmark-arrow-down-fill"
             }
         ]
+         const UploadWorkflow=[
+         {
+                title: "Upload Your Resume",
+                description: "Upload your pre-made resume to get personalized score.",
+                image: "bi bi-file-earmark-fill"
+            },
+            {
+                title: "Enter details",
+                description: "Fill in your experience, skills, and projects in our simple form to build your resume.",
+                image: "bi bi-info-square-fill"
+            },
+            {
+                title: "Get your score",
+                description: "Get your domain specific Resume score.",
+                image: "bi bi-check-circle"
+            }
+    ]
   return (
+    <>
     <div className="workflow container my-3 p-3">
       <h1>How it Works ?</h1>
       <h3 className="text-secondary fs-5">Create your professional resume in just 3 simple steps
@@ -30,5 +48,16 @@ export default function Workflow() {
 
       </div>
     </div>
+    <div className="workflow container my-3 p-3">
+      <h1>OR</h1>
+      <div className="Workflow-steps d-flex border border-warnig ">
+      <Card data={UploadWorkflow[0]} />
+      <Card data={UploadWorkflow[1]} />
+      <Card data={UploadWorkflow[2]} />
+
+      </div>
+    </div>
+
+    </>
   );
 }
